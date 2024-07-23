@@ -3,12 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Results</title>
+    <title>Your Results</title>
     <link rel="stylesheet" href="/static/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-top: 50px;
+        }
+        h1 {
+            color: #007BFF;
+        }
+        .score {
+            font-size: 2em;
+            color: #28a745;
+        }
+        .description {
+            margin: 20px 0;
+        }
+        .progress-bar-container {
+            background-color: #e0e0e0;
+            border-radius: 25px;
+            padding: 3px;
+            margin: 20px 0;
+        }
+        .progress-bar {
+            height: 25px;
+            border-radius: 20px;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+        }
+        .tips {
+            background-color: #e9f7ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .tips h2 {
+            color: #007BFF;
+        }
+        .tips p {
+            margin: 10px 0;
+        }
+        .images {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .images img {
+            width: 30%;
+            border-radius: 10px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Your Stress Level: {{ stress_level }}</h1>
-    <p>Causes of Stress: {{ causes }}</p>
-    <a href="/">Go Back Home</a>
+    <div class="container">
+        <h1>Your Results Are Ready!</h1>
+        <p class="score">Your Mental Health Today Test Score: <span>{{ stress_level }}</span></p>
+        <div class="progress-bar-container">
+            <div class="progress-bar" style="width: {{ stress_level }}%; background-color: {% if stress_level <= 39 %}#dc3545{% elif stress_level <= 54 %}#fd7e14{% elif stress_level <= 74 %}#ffc107{% elif stress_level <= 89 %}#28a745{% else %}#007bff{% endif %};">
+                {{ stress_level }}%
+            </div>
+        </div>
+        <p class="description">
+            {% if stress_level <= 39 %}
+                Struggling: You struggle with emotional ups and downs and the demands of life. In other words, you are human. You have some good coping mechanisms in place, but your answers indicate there’s at least one area in which you’d probably like to make significant changes.
+            {% elif stress_level <= 54 %}
+                Struggling somewhat: You have some coping skills but could feel better.
+            {% elif stress_level <= 74 %}
+                Coping: You are coping but there's room for improvement.
+            {% elif stress_level <= 89 %}
+                Coping well: You are coping well but could still benefit from some fine-tuning.
+            {% else %}
+                Flourishing: You are flourishing and have a good balance in your life.
+            {% endif %}
+        </p>
+        <div class="tips">
+            <h2>What to Know</h2>
+            <p>Cultivate a mental health mantra with discrete skill sets. One might be: Learn from the past, live in the present, and plan for the future. Each of these ideas can be put into action.</p>
+            <p>Prioritize self-care. The sleep and exercise you get in a day has a tremendous impact on how you feel about yourself and your overall mental health.</p>
+            <p>Challenging negative thoughts as they arise is one of the best ways to cope with distress. Understanding basic CBT can help you recognize whether you are making a difficult situation feel even tougher.</p>
+            <p>Chances are you are harder on yourself than you are on others. Enter self-compassion. Think about how you would treat someone else if they felt the way you feel now. Why not extend that same kindness and understanding to yourself?</p>
+            <p>If you struggle with procrastination and setting goals, consider tackling and completing a small task, which will help you gain momentum toward other life changes.</p>
+        </div>
+        <div class="tips">
+            <h2>Make Change Now</h2>
+            <p>Track positive emotions. Recognizing these moments, ones that you experience dozens of times a day, will shift you from a mindset of getting by to one of flourishing and reveling in life’s small pleasures.</p>
+            <p>Take stock of the people in your life. If there’s someone with whom you have constant friction or whose behavior is unpredictable, consider whether you can minimize interaction. Lack of predictability in individuals can lead to higher levels of stress when engaging with them.</p>
+            <p>Assess your mood fluctuations. If you experience mood swings or an inability to regulate your emotions as well as you’d like to, you might benefit from consulting with a mental health professional.</p>
+        </div>
+        <div class="images">
+            <img src="https://cdn2.psychologytoday.com/assets/inline_art/pt_self_test/2024-05/tests-mental-health-assessment-illustration-1.svg" alt="Mental Health Image 1">
+            <img src="https://via.placeholder.com/300x200" alt="Mental Health Image 2">
+            <img src="https://via.placeholder.com/300x200" alt="Mental Health Image 3">
+        </div>
+    </div>
 </body>
 </html>
