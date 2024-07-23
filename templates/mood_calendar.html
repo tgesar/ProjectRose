@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mood Calendar</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Mood Calendar</h1>
+    <form action="/submit_mood" method="post">
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required><br>
+        <label for="mood">Today's Mood (1-10):</label>
+        <input type="number" id="mood" name="mood" min="1" max="

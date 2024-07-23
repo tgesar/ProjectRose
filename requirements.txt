@@ -1,2 +1,2 @@
 Flask==2.0.3
-chart.js
+Werkzeug==2.0.3
